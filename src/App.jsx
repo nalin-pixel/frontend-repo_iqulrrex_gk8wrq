@@ -1,44 +1,30 @@
-import Hero from './components/Hero'
-import CategoryBrowser from './components/CategoryBrowser'
-import SocialCardForm from './components/SocialCardForm'
-import CredibilityHighlights from './components/CredibilityHighlights'
+import Header from "./components/Header";
+import LoginForm from "./components/LoginForm";
+import AuthBenefits from "./components/AuthBenefits";
+import Footer from "./components/Footer";
 
-function App() {
+export default function App() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white to-gray-50">
-      {/* Top nav */}
-      <header className="sticky top-0 z-20 bg-white/80 backdrop-blur border-b border-gray-200">
-        <div className="mx-auto max-w-7xl px-6 h-14 flex items-center justify-between">
-          <a href="#" className="font-extrabold text-xl tracking-tight">SocialNaka</a>
-          <nav className="hidden md:flex items-center gap-6 text-sm text-gray-700">
-            <a href="#browse" className="hover:text-gray-900">Explore</a>
-            <a href="#create" className="hover:text-gray-900">Create Card</a>
-            <a href="#why" className="hover:text-gray-900">Why</a>
-          </nav>
-          <a href="#create" className="rounded-md bg-gray-900 text-white px-3 py-1.5 text-sm font-semibold hover:bg-black/90">Get Started</a>
-        </div>
-      </header>
+    <div className="min-h-screen bg-gradient-to-b from-[#0B0F1A] to-[#0E1222] text-white">
+      {/* Background glow */}
+      <div className="pointer-events-none fixed inset-0">
+        <div className="absolute -top-24 left-1/2 -translate-x-1/2 h-72 w-72 rounded-full bg-indigo-600/30 blur-3xl" />
+        <div className="absolute bottom-0 right-0 h-72 w-72 rounded-full bg-fuchsia-600/20 blur-3xl" />
+      </div>
 
-      <main>
-        <Hero />
-        <CategoryBrowser />
-        <SocialCardForm />
-        <section id="why"><CredibilityHighlights /></section>
-      </main>
+      <Header />
 
-      {/* Footer */}
-      <footer className="border-t border-gray-200 bg-white">
-        <div className="mx-auto max-w-7xl px-6 py-10 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-sm text-gray-600">Social identity before business identity. Build with proof.</p>
-          <div className="flex items-center gap-4 text-sm">
-            <a href="#create" className="text-gray-900 font-medium">Create your card</a>
-            <span className="text-gray-300">•</span>
-            <a href="#browse" className="text-gray-600 hover:text-gray-900">Browse experts</a>
+      <main className="relative z-10">
+        <div className="max-w-6xl mx-auto px-4 pt-10">
+          <div className="mb-8 text-center md:text-left">
+            <span className="px-3 py-1 rounded-full border border-white/10 text-xs text-white/70 bg-white/5">Sign in to continue</span>
           </div>
         </div>
-      </footer>
-    </div>
-  )
-}
+        <LoginForm />
+        <AuthBenefits />
+      </main>
 
-export default App
+      <Footer />
+    </div>
+  );
+}

@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react';
-import { Mail, Lock, Eye, EyeOff, ArrowRight, ShieldCheck, Loader2 } from 'lucide-react';
+import { Mail, Lock, Eye, EyeOff, ArrowRight, ShieldCheck, Loader2, User } from 'lucide-react';
 
 export default function LoginForm() {
   const [showPassword, setShowPassword] = useState(false);
@@ -17,6 +17,16 @@ export default function LoginForm() {
     await new Promise((r) => setTimeout(r, 900));
     setLoading(false);
     alert('Demo: Submitted login. Hook to backend to proceed.');
+  };
+
+  const onGuest = () => {
+    try {
+      localStorage.setItem('socialnaka_guest', '1');
+    } catch (e) {
+      // ignore storage errors
+    }
+    // Simple exploration flow: scroll to features for now
+    window.location.hash = '#features';
   };
 
   return (
@@ -125,6 +135,16 @@ export default function LoginForm() {
               <img src="https://www.svgrepo.com/show/475656/google-color.svg" alt="Google" className="h-4 w-4" />
               Continue with Google
             </a>
+
+            <button
+              type="button"
+              onClick={onGuest}
+              className="inline-flex w-full items-center justify-center gap-2 rounded-md border border-white/15 bg-transparent px-4 py-2.5 text-sm font-medium text-white transition hover:bg-white/10"
+            >
+              <User className="h-4 w-4" />
+              Continue as Guest
+            </button>
+            <p className="text-center text-xs text-white/60">Limited access. Your changes may not be saved.</p>
 
             <p className="text-center text-sm text-white/70">
               Don’t have an account?{' '}
